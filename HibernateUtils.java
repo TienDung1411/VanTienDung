@@ -37,8 +37,6 @@ public class HibernateUtils {
     }
 
     public static void shutdown() {
-        if (registry != null) {
-            StandardServiceRegistryBuilder.destroy(registry);
-        }
+        getSessionFactory().close();
     }
 }
