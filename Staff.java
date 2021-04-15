@@ -1,35 +1,69 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC
-"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
- 
-<hibernate-configuration>
- 
-  <session-factory>
-      <!-- Database connection settings -->
-      <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-      <property name="connection.url">jdbc:mysql://192.168.68.100:3306/uni_training?useSSL=false</property>
-      <property name="connection.username">db_cluster</property>
-      <property name="connection.password">bccs3_maria</property>
- 
-      <!-- JDBC connection pool (use the built-in) -->
-      <property name="connection.pool_size">1</property>
- 
-      <!-- SQL dialect -->
-      <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
- 
-      <!-- Enable Hibernate's automatic session context management -->
-      <property name="current_session_context_class">thread</property>
- 
-      <!-- Disable the second-level cache -->
-      <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
- 
-      <!-- Echo all executed SQL to stdout -->
-      <property name="show_sql">true</property>
- 
-      <mapping class="org.o7planning.HibernateTutorial.Staff" />
-      
- 
-  </session-factory>
- 
-</hibernate-configuration>
+package org.o7planning.HibernateTutorial;
+
+import java.util.Date;
+
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "staff")
+public class Staff {
+	private long staff_id;
+	private String staff_name;
+	private String staff_code;
+	private Date birth_day;
+	
+	public Staff() {}
+	public Staff(String staff_name, String staff_code, Date birth_day) {
+        this.staff_name = staff_name;
+        this.staff_code = staff_code;
+        this.birth_day = birth_day;
+    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "staff_id")
+	 public long getStaff_id() {
+	        return staff_id;
+	    }
+
+	    public void setStaff_id(long staff_id) {
+	        this.staff_id = staff_id;
+	    }
+
+	@Column(name = "staff_name")
+	    public String getStaff_name() {
+	        return staff_name;
+	    }
+
+	    public void setStaff_name(String staff_name) {
+	        this.staff_name = staff_name;
+	    }
+
+	 @Column(name = "staff_code")
+	    public String getStaff_code() {
+	        return staff_code;
+	    }
+
+	    public void setStaff_code(String staff_code) {
+	        this.staff_code = staff_code;
+	    }
+
+	 @Column(name = "birth_day")
+	    public Date getBirth_day() {
+	        return birth_day;
+	    }
+	 
+	    public void setBirth_day(Date birth_day) {
+	        this.birth_day = birth_day;
+	    }
+	    @Override
+	    public String toString() {
+	        return "Student [id=" + staff_id + ", Name=" + staff_name + ", code=" + staff_code + ", birth=" + birth_day + "]";
+	    }
+
+}
