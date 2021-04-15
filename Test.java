@@ -13,9 +13,9 @@ public static void main(String[] args) {
     	Session session = HibernateUtils.getSessionFactory().openSession();
         // start a transaction
         transaction = session.beginTransaction();
-        List < Staff > staff = session.createQuery("from Staff", Staff.class).list();
+        List < Staff > st = session.createQuery("from staff", Staff.class).list();
 
-        for (Staff emp : staff) {
+        for (Staff emp : st) {
             System.out.println(emp.getStaff_id()  );
             System.out.println(emp.getStaff_name()  );
             System.out.println(emp.getStaff_code()  );
