@@ -5,6 +5,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+//may xoa thu muc resource cua maven roi ak
+// t da dung dau
 
 public class HibernateUtils {
 	private static StandardServiceRegistry registry;
@@ -14,7 +16,7 @@ public class HibernateUtils {
         if (sessionFactory == null) {
             try {
                 // Create registry
-                registry = new StandardServiceRegistryBuilder().configure("org.o7planning.HibernateTutorial.hibernate.cfg.xml").build();
+                registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
 
                 // Create MetadataSources
                 MetadataSources sources = new MetadataSources(registry);
@@ -37,6 +39,8 @@ public class HibernateUtils {
     }
 
     public static void shutdown() {
-        getSessionFactory().close();
+        if (registry != null) {
+            StandardServiceRegistryBuilder.destroy(registry);
+        }
     }
 }
