@@ -5,9 +5,6 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-//may xoa thu muc resource cua maven roi ak
-// t da dung dau
-
 public class HibernateUtils {
 	private static StandardServiceRegistry registry;
     private static SessionFactory sessionFactory;
