@@ -1,40 +1,38 @@
 package org.o7planning.HibernateTutorial;
 
-import java.math.BigInteger;
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name = "staff")
-
 public class Staff {
-	private BigInteger staff_id;
+	private long staff_id;
 	private String staff_name;
 	private String staff_code;
 	private Date birth_day;
 	
 	public Staff() {}
-	public Staff(BigInteger staff_id, String staff_name, String staff_code, Date birth_day) {
-        this.staff_id = staff_id;
+	public Staff(String staff_name, String staff_code, Date birth_day) {
         this.staff_name = staff_name;
         this.staff_code = staff_code;
         this.birth_day = birth_day;
     }
-	
-	
-	
 	@Id
+	@Basic
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "staff_id")
-	 public BigInteger getStaff_id() {
+	 public long getStaff_id() {
 	        return staff_id;
 	    }
 
-	    public void setStaff_id(BigInteger staff_id) {
+	    public void setStaff_id(long staff_id) {
 	        this.staff_id = staff_id;
 	    }
 
